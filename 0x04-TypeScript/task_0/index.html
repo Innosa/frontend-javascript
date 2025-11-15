@@ -1,11 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Students Table</title>
-  </head>
-  <body>
-    <h1>Students Table</h1>
-    <script src="dist/main.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Students Table</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+      font-family: Arial, sans-serif;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="text-align: center;">Students List</h2>
+
+  <!-- Table will be populated by JavaScript -->
+  <table id="studentsTable">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+      <!-- Rows will be added here -->
+    </tbody>
+  </table>
+
+  <script>
+    // Sample array of students
+    const students = [
+      { firstName: "Joseph", location: "Congo" },
+      { firstName: "Michael", location: "Ghana" },
+    ];
+
+    // Get the table body
+    const tableBody = document.getElementById("tableBody");
+
+    // Loop through each student and append a row
+    students.forEach(student => {
+      // Create a new row
+      const row = document.createElement("tr");
+
+      // Create cells for first name and location
+      const nameCell = document.createElement("td");
+      nameCell.textContent = student.firstName;
+
+      const locationCell = document.createElement("td");
+      locationCell.textContent = student.location;
+
+      // Append cells to the row
+      row.appendChild(nameCell);
+      row.appendChild(locationCell);
+
+      // Append the row to the table body
+      tableBody.appendChild(row);
+    });
+  </script>
+
+</body>
 </html>
